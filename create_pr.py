@@ -2,17 +2,15 @@ import requests
 import json
 from decouple import config
 
-API_USERNAME = config('USER')
-API_KEY = config('KEY')
-
 # Define the necessary variables
-repo_owner = "owner"
-repo_name = "repo"
-base_branch = "main"
-head_branch = "test_pr_prog"
+
+repo_owner = config('REPO_OWNER')
+repo_name = config('REPO_NAME')
+base_branch = config('BASE_BRANCH')
+head_branch = config('HEAD_BRANCH')
 pr_title = "testing PR programetically"
 pr_body = "Testing the thing out"
-access_token = "abc"
+access_token = config('GITHUB_ACCESS_TOKEN')
 
 # Set the API endpoint URL
 url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/pulls"
