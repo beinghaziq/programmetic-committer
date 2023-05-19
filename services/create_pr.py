@@ -14,16 +14,15 @@ class CreatePR:
 		print("ds,nfnklsdnfkllfd")
     
 	def call(self):
-		print(f"Pull request URL: {self.repo_owner}")
-		# url = f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/pulls"
-		# response = requests.post(url, headers=self._headers(), data=json.dumps(self._data()))
-		# if response.status_code == 201:
-		# 	print("Pull request created successfully!")
-		# 	pr_data = response.json()
-		# 	print(f"Pull request URL: {pr_data['html_url']}")
-		# else:
-		# 	print("Failed to create pull request.")
-		# 	print(f"Error message: {response.json()['message']}")
+		url = f"https://api.github.com/repos/{self.repo_owner}/{self.repo_name}/pulls"
+		response = requests.post(url, headers=self._headers(), data=json.dumps(self._data()))
+		if response.status_code == 201:
+			print("Pull request created successfully!")
+			pr_data = response.json()
+			print(f"Pull request URL: {pr_data['html_url']}")
+		else:
+			print("Failed to create pull request.")
+			print(f"Error message: {response.json()['message']}")
 
 	def _headers(self):
 		return {
